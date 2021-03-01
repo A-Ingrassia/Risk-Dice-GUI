@@ -11,11 +11,13 @@ from random import randint
 
 class MainWindow(QMainWindow):
     def __init__(self):
+        
+        # Boilerplate PySide6 app constructors
         super(MainWindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        # SINGLE TAB
+        # SINGLE tab
         self.ui.roll_btn.pressed.connect(self.clear_roll_output)                # Clears previous result when pressed
         self.ui.roll_btn.released.connect(self.roll_btn)                        # Initiates single roll when released
         self.ui.atk_btn_1.clicked.connect(self.atk_btn_1)                       # Dice button connections...
@@ -26,7 +28,7 @@ class MainWindow(QMainWindow):
         self.atk_list = []                                                      # SINGLE dice container (atk)
         self.def_list = []                                                      # SINGLE dice container (def)
 
-        # ONSLAUGHT TAB
+        # ONSLAUGHT tab
         self.ui.onslaught_btn.pressed.connect(self.clear_onslaught_output)      # Clears previous result when pressed
         self.ui.onslaught_btn.released.connect(self.onslaught_btn)              # Initiates onslaught roll when released
         self.ui.atk_army_total.valueChanged.connect(self.atk_available_armies)  # Updates current atk army total
@@ -80,8 +82,11 @@ class MainWindow(QMainWindow):
         Output represents resulting ATK and DEF army losses.
         """
 
+        # When defender rolls a single die:
         if self.ui.def_dice_num.text() == "1":
             self.def_list = [randint(1, 6)]
+            
+            # 1v1 roll
             if self.ui.atk_dice_num.text() == "1":
                 self.atk_list = [randint(1, 6)]
                 if self.def_list[0] >= self.atk_list[0]:
@@ -90,6 +95,8 @@ class MainWindow(QMainWindow):
                 else:
                     self.ui.atk_roll_result.setText("")
                     self.ui.def_roll_result.setText("DEF -1")
+                    
+            # 2v1 roll
             elif self.ui.atk_dice_num.text() == "2":
                 self.atk_list = sorted([randint(1, 6), randint(1, 6)])
                 if (self.def_list[0] >= self.atk_list[0]) and (self.def_list[0] >= self.atk_list[1]):
@@ -98,6 +105,8 @@ class MainWindow(QMainWindow):
                 else:
                     self.ui.atk_roll_result.setText("")
                     self.ui.def_roll_result.setText("DEF -1")
+                    
+            # 3v1 roll
             elif self.ui.atk_dice_num.text() == "3":
                 self.atk_list = sorted([randint(1, 6), randint(1, 6), randint(1, 6)])
                 if (self.def_list[0] >= self.atk_list[0]) and \
@@ -109,8 +118,11 @@ class MainWindow(QMainWindow):
                     self.ui.atk_roll_result.setText("")
                     self.ui.def_roll_result.setText("DEF -1")
 
+        # When defender rolls 2 dice:
         elif self.ui.def_dice_num.text() == "2":
             self.def_list = sorted([randint(1, 6), randint(1, 6)])
+            
+            # 1v2 roll
             if self.ui.atk_dice_num.text() == "1":
                 self.atk_list = [randint(1, 6)]
                 if (self.atk_list[0] <= self.def_list[0]) or (self.atk_list[0] <= self.def_list[1]):
@@ -119,6 +131,8 @@ class MainWindow(QMainWindow):
                 else:
                     self.ui.atk_roll_result.setText("")
                     self.ui.def_roll_result.setText("DEF -1")
+                    
+            # 2v2 roll
             elif self.ui.atk_dice_num.text() == "2":
                 self.atk_list = sorted([randint(1, 6), randint(1, 6)])
                 if (self.atk_list[0] <= self.def_list[0]) and (self.atk_list[1] <= self.def_list[1]):
@@ -130,6 +144,8 @@ class MainWindow(QMainWindow):
                 else:
                     self.ui.atk_roll_result.setText("ATK -1")
                     self.ui.def_roll_result.setText("DEF -1")
+                    
+            # 3v2 roll
             elif self.ui.atk_dice_num.text() == "3":
                 self.atk_list = sorted([randint(1, 6), randint(1, 6), randint(1, 6)])
                 if (self.atk_list[2] <= self.def_list[1]) and (self.atk_list[1] <= self.def_list[0]):
@@ -300,7 +316,9 @@ class MainWindow(QMainWindow):
         self.army_total_reset()
 
 
-if __name__ == '__main__':
+# Boilerplate code block that makes a PySide6 app run (with the exception of 'app.setStyle('Windows')', which I included 
+# in order to modify the app's aesthetic)
+if __name__ == '__main__':             
     app = QApplication(sys.argv)
     app.setStyle('Windows')
     window = MainWindow()
