@@ -1,4 +1,4 @@
-# **OVERVIEW**
+# **PRJECT OVERVIEW**
 
 This Windows-only GUI application is a dice roll simulator for the board game "Risk". It was built with PySide6 and Qt Designer, then frozen into a standalone executable using PyInstaller. It is divided into two pages, and players can navigate between them by clicking the tabs at the top of the window ("SINGLE" and "ONSLAUGHT"). Each page contains its own unique functionality:
 
@@ -25,11 +25,13 @@ the defender has 0 armies remaining). The resulting total army losses are then d
 
 # **CONTENTS**
 ***
-
-- **app_images folder**: contains images of both of the app's tabs
-
-
 - **executable_app folder**: contains the actual executable application (**risk_dice.exe**) along with a handful of files that must be present in order for the app to run properly on Windows
 
 
 - **python_script folder**: contains python files related to the app's aesthetic (**main_ui.py**) and function (**main_script.py**)
+
+
+- **single_tab.png**: image of the "SINGLE" tab
+
+
+- **onslaught_tab.png**: image of the "ONSLAUGHT" tab
