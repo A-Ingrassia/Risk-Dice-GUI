@@ -1,5 +1,4 @@
 # **OVERVIEW**
-***
 
 This Windows-only GUI application is a dice roll simulator for the board game "Risk". It was built with PySide6 and Qt Designer, then frozen into a standalone executable using PyInstaller. It is divided into two pages, and players can navigate between them by clicking the tabs at the top of the window ("SINGLE" and "ONSLAUGHT"). Each page contains its own unique functionality:
 
