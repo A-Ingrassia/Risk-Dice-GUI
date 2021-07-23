@@ -6,7 +6,7 @@ This Windows-only GUI application is a dice roll simulator for the board game "R
 
 This page allows players to simulate a single roll - just as if they were playing with physical dice. The players can click buttons representing the number of dice each player would like to roll (a max of 3 for the attacker and 2 for the defender). Those numbers are displayed until different ones are chosen. Players can then click the "ROLL" button, which initiates a single roll and displays the resulting army losses. Pressing the "ROLL" button again clears the previous result, and releasing it initiates a new roll - and so on.
 
-![single_tab.png](attachment:a7ad535d-31de-412e-bd79-a0a3ba1aa206.png)
+![SINGLE](single_tab.png)
 
 
 ## Page 2: **"ONSLAUGHT"**
@@ -18,7 +18,7 @@ Players enter the total numbers of attacking and defending armies, then click th
 a cascade of rolls that only stops when one player is completely defeated (when the attacker has 1 army remaining OR
 the defender has 0 armies remaining). The resulting total army losses are then displayed.
 
-![onslaught_tab.png](attachment:9c24e103-aca6-4a23-b49f-b24b8154df1d.png)
+![ONSLAUGHT](onslaught_tab.png)
 
 
 
